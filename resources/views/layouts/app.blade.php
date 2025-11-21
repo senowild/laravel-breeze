@@ -11,26 +11,57 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+        <!-- Bootstrap (Sneat-like) -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
-            <!-- Page Heading -->
-            @isset($header)
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
+        <!-- Vite assets -->
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <style>
+            body { font-family: 'Figtree', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+            .app-sidebar { min-width: 220px; max-width: 260px; background:#fff; border-right:1px solid #e6e6ef; }
+            .app-content { background:#f8fafc; min-height:100vh; }
+            .brand { font-weight:700; color:#4f46e5; }
+        </style>
+    </head>
+    <body>
+        <div class="d-flex">
+            <aside class="app-sidebar d-none d-md-block">
+                <div class="p-3">
+                    <a href="/" class="d-flex align-items-center mb-3 text-decoration-none">
+                        <x-application-logo class="me-2" />
+                        <span class="brand">{{ config('app.name', 'Laravel') }}</span>
+                    </a>
+                    <x-layout.sidebar />
+                </div>
+            </aside>
+
+            <div class="flex-fill app-content">
+                <header class="border-bottom bg-white">
+                    <div class="container-fluid">
+                        <x-layout.navbar />
                     </div>
                 </header>
-            @endisset
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+                <main class="container-fluid py-4">
+                    @if (isset($header))
+                        <div class="mb-4">
+                            {{ $header }}
+                        </div>
+                    @endif
+
+                    <div class="container">
+                        {{ $slot }}
+                    </div>
+                </main>
+
+                <footer class="mt-auto">
+                    <x-layout.footer />
+                </footer>
+            </div>
         </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     </body>
 </html>
+
