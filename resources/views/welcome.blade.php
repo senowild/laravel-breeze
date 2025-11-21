@@ -19,7 +19,7 @@
             </style>
         @endif
     </head>
-    <body class="font-sans antialiased dark:bg-black dark:text-white/50">
+    <body class="font-sans antialiased dark:bg-black dark:text-white/50" style="padding-bottom:90px;">
         <div class="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
             <img id="background" class="absolute -left-20 top-0 max-w-[877px]" src="https://laravel.com/assets/img/welcome/background.svg" alt="Laravel background" />
             <div class="relative min-h-screen flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
@@ -166,7 +166,7 @@
                         </div>
                     </main>
 
-                    <footer class="py-16 text-center text-sm text-black dark:text-white/70">
+                    <footer class="py-3 text-center text-sm text-black dark:text-white/70 border-top" style="position:fixed;left:0;right:0;bottom:0;z-index:1030;background:#ffffff;">
                         Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
                     </footer>
                 </div>

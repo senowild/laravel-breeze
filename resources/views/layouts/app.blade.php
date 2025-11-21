@@ -20,7 +20,10 @@
         <style>
             body { font-family: 'Figtree', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
             .app-sidebar { min-width: 220px; max-width: 260px; background:#fff; border-right:1px solid #e6e6ef; }
-            .app-content { background:#f8fafc; min-height:100vh; }
+            /* Make content a vertical flex container so footer can be pushed to bottom */
+            .app-content { background:#f8fafc; min-height:100vh; display:flex; flex-direction:column; }
+            /* Make the main content area grow to fill available space */
+            main.app-main { flex: 1 1 auto; }
             .brand { font-weight:700; color:#4f46e5; }
         </style>
     </head>
@@ -43,7 +46,7 @@
                     </div>
                 </header>
 
-                <main class="container-fluid py-4">
+                <main class="container-fluid py-4 app-main">
                     @if (isset($header))
                         <div class="mb-4">
                             {{ $header }}
