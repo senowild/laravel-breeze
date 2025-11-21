@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,6 +20,8 @@ Route::middleware('auth')->group(function () {
     
     // Category CRUD routes
     Route::resource('categories', CategoryController::class)->except(['show']);
+    // Product CRUD routes
+    Route::resource('products', ProductController::class)->except(['show']);
 });
 
 require __DIR__.'/auth.php';
